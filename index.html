@@ -102,6 +102,25 @@
       }
     }
 
+    @keyframes countPulse {
+      0% {
+        transform: scale(1);
+        text-shadow: 0 0 0 transparent;
+      }
+      50% {
+        transform: scale(1.2);
+        text-shadow: 0 0 10px lime;
+      }
+      100% {
+        transform: scale(1);
+        text-shadow: 0 0 0 transparent;
+      }
+    }
+
+    .pulse-count {
+      animation: countPulse 0.5s ease;
+    }
+
     .subscribers {
       font-size: 42px;
       font-weight: bold;
@@ -155,7 +174,7 @@
       <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram Icon" />
       JOIN CHANNEL NOW
     </a>
-    <div class="subscribers">26,000</div>
+    <div id="subscriberCount" class="subscribers">26,000</div>
     <div class="label">SUBSCRIBERS</div>
     <p><strong>Welcome to KK Tennis – Your Ultimate Tennis Expert!</strong></p>
     <p class="highlight">🌟 Wimbledon 2025 90% accurate Results 🌟</p>
@@ -186,14 +205,13 @@
 </div>
 
 <script>
+  // Slide auto switch
   let slider = document.getElementById('slider');
-  let currentSlide = 0;
   setTimeout(() => {
-    currentSlide = 1;
     slider.style.transform = 'translateX(-100vw)';
   }, 4000);
 
-  // Swipe functionality
+  // Swipe back
   let startX = 0;
   document.addEventListener('touchstart', e => startX = e.touches[0].clientX);
   document.addEventListener('touchend', e => {
@@ -204,6 +222,26 @@
       slider.style.transform = 'translateX(0vw)';
     }
   });
+
+  // Subscriber count animation
+  const countEl = document.getElementById('subscriberCount');
+  const start = parseInt(localStorage.getItem('kk_sub_count')) || 26000;
+  const end = 26050;
+  const delay = 333; // 3 per second
+  let current = start;
+
+  function updateCount() {
+    if (current < end) {
+      current++;
+      countEl.textContent = current.toLocaleString();
+      countEl.classList.add('pulse-count');
+      localStorage.setItem('kk_sub_count', current);
+      setTimeout(() => countEl.classList.remove('pulse-count'), 500);
+      setTimeout(updateCount, delay);
+    }
+  }
+
+  window.onload = updateCount;
 </script>
 
 </body>
