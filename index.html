@@ -4,7 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>KK Tennis King</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Preconnect to improve font loading performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Async font loading -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+        rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+          rel="stylesheet">
+  </noscript>
+
   <style>
     html, body {
       margin: 0;
@@ -122,43 +134,43 @@
       margin: 10px 0;
       margin-top: 40px;
       margin-bottom: 40px;
-
       font-size: 16px;
     }
+
     .neon-red-pulse {
-  font-size: 16px;
-  font-weight: bold;
-  color: #ff4d4d;
-  text-align: center;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  animation: redPulse 1.5s infinite;
-  text-shadow:
-    0 0 5px #ff4d4d,
-    0 0 10px #ff4d4d,
-    0 0 15px #ff4d4d,
-    0 0 20px #ff1a1a,
-    0 0 30px #ff1a1a;
-}
+      font-size: 16px;
+      font-weight: bold;
+      color: #ff4d4d;
+      text-align: center;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      animation: redPulse 1.5s infinite;
+      text-shadow:
+        0 0 5px #ff4d4d,
+        0 0 10px #ff4d4d,
+        0 0 15px #ff4d4d,
+        0 0 20px #ff1a1a,
+        0 0 30px #ff1a1a;
+    }
 
-@keyframes redPulse {
-  0% { text-shadow: 0 0 5px #ff4d4d; }
-  50% { text-shadow: 0 0 20px #ff1a1a, 0 0 30px #ff1a1a; }
-  100% { text-shadow: 0 0 5px #ff4d4d; }
-}
-
+    @keyframes redPulse {
+      0% { text-shadow: 0 0 5px #ff4d4d; }
+      50% { text-shadow: 0 0 20px #ff1a1a, 0 0 30px #ff1a1a; }
+      100% { text-shadow: 0 0 5px #ff4d4d; }
+    }
 
     ul {
       list-style: none;
       padding: 0;
       margin-top: 10px;
       line-height: 1.5;
-       font-size: 14px;
+      font-size: 14px;
       text-align: center;
     }
+
     ul li {
-  margin: 6px 0;
-}
+      margin: 6px 0;
+    }
 
     ul li::before {
       content: "✅ ";
@@ -169,15 +181,16 @@
       color: #000;
       text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff;
     }
+
     p.neon {
-  font-size: 14px;        
-  color: #ffffff;           
-  text-align: lefyr;   
-  margin-top: 20px;
-  line-height: 1.4;
-  text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000;
-  padding: 0 10px;
-}
+      font-size: 14px;
+      color: #ffffff;
+      text-align: left;
+      margin-top: 20px;
+      line-height: 1.4;
+      text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000;
+      padding: 0 10px;
+    }
   </style>
 </head>
 <body>
@@ -193,8 +206,8 @@
     <div class="subscribers" id="subscriberCount">26,000</div>
     <div class="label">SUBSCRIBERS</div>
     <p><strong>Welcome to KK Tennis – Your Ultimate Tennis Expert!</strong></p>
-<p class="highlight neon-red-pulse">🌟 WIMBLEDON 2025 90% ACCURATE RESULTS 🌟</p>    
-    <a href="#" class="telegram-btn">
+    <p class="highlight neon-red-pulse">🌟 WIMBLEDON 2025 90% ACCURATE RESULTS 🌟</p>
+    <a href="https://telegram.me/+lLApnW_TSyI4ZWZl" class="telegram-btn">
       <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram Icon" />
       JOIN CHANNEL NOW
     </a>
@@ -244,8 +257,7 @@
   let storedCount = parseInt(localStorage.getItem("kk_subscribers")) || 26000;
   const maxCount = 26300;
 
-  // Set initial value without animation
-  countElement.textContent = storedCount.toLocaleString();
+  countElement.textContent = storedCount.toLocaleString(); // no animation on first load
 
   function updateCounter() {
     if (storedCount < maxCount) {
@@ -258,7 +270,7 @@
     }
   }
 
-  setInterval(updateCounter, 500); // 1 increment every 500ms
+  setInterval(updateCounter, 500);
 </script>
 
 </body>
