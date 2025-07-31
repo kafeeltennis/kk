@@ -2,37 +2,39 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>KK Tennis King</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-
-    body {
+    html, body {
       margin: 0;
+      padding: 0;
       font-family: 'Roboto', sans-serif;
+      background: linear-gradient(180deg, #a78bfa, #c4b5fd);
+      color: #fff;
+      text-align: center;
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
       max-width: 1080px;
       max-height: 1920px;
       margin: auto;
-      overflow: hidden;
-      background: linear-gradient(to bottom, #a077e8, #f9f9f9);
     }
 
     .container {
-      width: 100%;
-      height: 100vh;
       display: flex;
+      width: 200vw;
       transition: transform 1s ease-in-out;
+      height: 100vh;
     }
 
     .slide {
-      flex: 0 0 100%;
-      padding: 20px;
+      width: 100vw;
+      height: 100vh;
+      padding: 40px 20px;
       box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
+      position: relative;
+      overflow-y: auto;
     }
 
     .profile-pic {
@@ -40,138 +42,169 @@
       height: 160px;
       border-radius: 50%;
       object-fit: cover;
-      margin-bottom: 20px;
+      border: 5px solid #fff;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      margin: 10px auto;
       animation: float 2s ease-in-out infinite;
     }
 
     .telegram-btn {
       display: inline-flex;
       align-items: center;
-      background: #0088cc;
+      justify-content: center;
+      background: linear-gradient(to bottom, #0f172a, #1e293b);
       color: white;
-      padding: 12px 20px;
-      border-radius: 30px;
+      padding: 14px 30px;
+      border-radius: 40px;
+      text-decoration: none;
       font-size: 16px;
       font-weight: bold;
-      margin: 10px auto;
-      text-decoration: none;
-      box-shadow: 0 0 15px #0088cc;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+      transition: 0.3s;
       animation: pulse 2s infinite, float 2s ease-in-out infinite;
+      margin: 15px auto;
+    }
+
+    .telegram-btn:hover {
+      background: #2a2ad4;
     }
 
     .telegram-btn img {
-      width: 20px;
-      height: 20px;
+      width: 18px;
+      height: 18px;
       margin-right: 10px;
     }
 
-    .subscribers {
-      font-size: 20px;
-      font-weight: bold;
-      margin-top: 10px;
-    }
-
-    .neon {
-      font-size: 20px;
-      color: black;
-      text-shadow: 0 0 5px #000000, 0 0 10px #000000;
-      margin-bottom: 10px;
-    }
-
     @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
+      0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+      }
+      70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+      }
     }
 
     @keyframes float {
-      0% { transform: translateY(0); }
-      50% { transform: translateY(-5px); }
-      100% { transform: translateY(0); }
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-5px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    .subscribers {
+      font-size: 42px;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    .label {
+      font-size: 18px;
+      color: #e0e0e0;
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-size: 22px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    .highlight {
+      font-weight: bold;
+      color: #ec4899;
+      margin: 10px 0;
+      font-size: 18px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 10px;
+      line-height: 2;
+    }
+
+    ul li::before {
+      content: "✅ ";
+      color: greenyellow;
+    }
+
+    .neon {
+      color: #000;
+      text-shadow: 0 0 5px #39ff14, 0 0 10px #39ff14, 0 0 20px #39ff14;
     }
   </style>
 </head>
 <body>
 
-  <div class="container" id="slider">
-    <!-- Slide 1 -->
-    <div class="slide" id="slide1">
-      <img class="profile-pic" src="Tennis.jpg" alt="KK Tennis King" />
-      <div class="subscribers" id="subscriber-count">26,000</div>
-      <a href="#" class="telegram-btn">
-        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram Icon" />
-        JOIN CHANNEL NOW
-      </a>
-      <h2 style="color:white; margin: 10px 0;">🌟 Wimbledon 2025 90% accurate Results 🌟</h2>
-      <a href="#" class="telegram-btn">
-        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram Icon" />
-        JOIN CHANNEL NOW
-      </a>
-    </div>
-
-    <!-- Slide 2 -->
-    <div class="slide" id="slide2">
-      <img class="profile-pic" src="Tennis.jpg" alt="KK Tennis King" />
-      <p class="neon">Welcome to KK Tennis – Your Ultimate Tennis Expert!</p>
-      <a href="#" class="telegram-btn">
-        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram Icon" />
-        JOIN CHANNEL NOW
-      </a>
-      <p class="neon">
-        Join thousands of Tennis enthusiasts who rely on our predictions, sessions, Set, Book Set and real-time tennis news!
-        Whether you're a fantasy league player or a die-hard Tennis fan, we provide accurate team insights, reports, player stats,
-        and winning combinations – all designed to help you make the smartest picks and stay ahead of the game.
-      </p>
-      <p class="neon">👉 What We Offer:</p>
-      <p class="neon">✅ Daily Free Match Session Updates</p>
-      <p class="neon">✅ Free Pro-Level Accurate Predictions</p>
-      <p class="neon">✅ Fast & Reliable Tennis News and Insights For Free</p>
-      <p class="neon">✅ Direct Access to Our Exclusive Telegram Community</p>
-    </div>
+<div id="slider" class="container">
+  <!-- Slide 1 -->
+  <div class="slide">
+    <img class="profile-pic" src="Tennis.jpg" alt="KK Tennis King" />
+    <a href="#" class="telegram-btn">
+      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram Icon" />
+      JOIN CHANNEL NOW
+    </a>
+    <div class="subscribers">26,000</div>
+    <div class="label">SUBSCRIBERS</div>
+    <p><strong>Welcome to KK Tennis – Your Ultimate Tennis Expert!</strong></p>
+    <p class="highlight">🌟 Wimbledon 2025 90% accurate Results 🌟</p>
+    <a href="#" class="telegram-btn">
+      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram Icon" />
+      JOIN CHANNEL NOW
+    </a>
   </div>
 
-  <script>
-    // Slide transition after 4 seconds
-    setTimeout(() => {
-      document.getElementById('slider').style.transform = 'translateX(-100%)';
-    }, 4000);
+  <!-- Slide 2 -->
+  <div class="slide">
+    <img class="profile-pic" src="Tennis.jpg" alt="KK Tennis King" />
+    <p class="neon">Join thousands of Tennis enthusiasts who rely on our predictions, sessions, Set, Book Set and real-time tennis news! Whether you're a fantasy league player or a die-hard Tennis fan, we provide accurate team insights, reports, player stats, and winning combinations – all designed to help you make the smartest picks and stay ahead of the game.</p>
 
-    // Swipe to go back
-    let startX;
-    const slider = document.getElementById('slider');
+    <a href="#" class="telegram-btn">
+      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram Icon" />
+      JOIN CHANNEL NOW
+    </a>
 
-    slider.addEventListener('touchstart', e => {
-      startX = e.touches[0].clientX;
-    });
+    <div class="section-title neon">👉 What We Offer:</div>
+    <ul class="neon">
+      <li>Daily Free Match Session Updates</li>
+      <li>Free Pro-Level Accurate Predictions</li>
+      <li>Fast & Reliable Tennis News and Insights For Free</li>
+      <li>Direct Access to Our Exclusive Telegram Community</li>
+    </ul>
+  </div>
+</div>
 
-    slider.addEventListener('touchend', e => {
-      let endX = e.changedTouches[0].clientX;
-      if (endX - startX > 50) {
-        slider.style.transform = 'translateX(0%)';
-      }
-    });
+<script>
+  let slider = document.getElementById('slider');
+  let currentSlide = 0;
+  setTimeout(() => {
+    currentSlide = 1;
+    slider.style.transform = 'translateX(-100vw)';
+  }, 4000);
 
-    // Subscriber Counter
-    const start = 26000;
-    const end = 26050;
-    const delay = 333; // 3 per second
-
-    const countEl = document.getElementById('subscriber-count');
-    let currentCount = parseInt(localStorage.getItem('kk_sub_count')) || start;
-    if (currentCount > end) currentCount = end;
-
-    function updateCount() {
-      if (currentCount < end) {
-        currentCount++;
-        localStorage.setItem('kk_sub_count', currentCount);
-        countEl.textContent = currentCount.toLocaleString();
-        setTimeout(updateCount, delay);
-      }
+  // Swipe functionality
+  let startX = 0;
+  document.addEventListener('touchstart', e => startX = e.touches[0].clientX);
+  document.addEventListener('touchend', e => {
+    let endX = e.changedTouches[0].clientX;
+    if (startX - endX > 50) {
+      slider.style.transform = 'translateX(-100vw)';
+    } else if (endX - startX > 50) {
+      slider.style.transform = 'translateX(0vw)';
     }
-
-    countEl.textContent = currentCount.toLocaleString();
-    setTimeout(updateCount, delay);
-  </script>
+  });
+</script>
 
 </body>
 </html>
