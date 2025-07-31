@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>KK Tennis King</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
@@ -12,7 +12,19 @@
       background: linear-gradient(180deg, #a78bfa, #c4b5fd);
       color: #333;
       text-align: center;
+      overflow: hidden;
+    }
+
+    .container {
+      display: flex;
+      width: 200%;
+      transition: transform 1s ease-in-out;
+    }
+
+    .slide {
+      width: 100vw;
       padding: 40px 20px;
+      box-sizing: border-box;
     }
 
     .profile-pic {
@@ -26,7 +38,7 @@
 
     h1 {
       margin-top: 20px;
-      font-size: 26px;
+      font-size: 32px;
       color: #fff;
     }
 
@@ -79,13 +91,13 @@
     }
 
     .label {
-      font-size: 16px;
+      font-size: 18px;
       color: #4b5563;
       margin-bottom: 30px;
     }
 
     .section-title {
-      font-size: 18px;
+      font-size: 22px;
       font-weight: bold;
       margin-top: 30px;
     }
@@ -94,63 +106,67 @@
       font-weight: bold;
       color: #ec4899;
       margin: 10px 0;
-      font-size: 14px;
+      font-size: 18px;
     }
 
     ul {
       list-style: none;
       padding: 0;
       margin-top: 10px;
-      line-height: 1;
+      line-height: 2;
     }
 
     ul li::before {
       content: "✅ ";
       color: green;
     }
-
-    .bottom-btn {
-      margin-top: 40px;
-    }
   </style>
 </head>
 <body>
 
- <img class="profile-pic" src="Tennis.jpg" alt="KK Tennis King">
+<div id="slider" class="container">
+  <!-- Slide 1 -->
+  <div class="slide">
+    <img class="profile-pic" src="Tennis.jpg" alt="KK Tennis King" />
+    <h1>KK Tennis King</h1>
+    <a href="#" class="telegram-btn">
+      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram Icon" />
+      JOIN CHANNEL NOW
+    </a>
+    <div class="subscribers">26,000</div>
+    <div class="label">SUBSCRIBERS</div>
+    <p><strong>Welcome to KK Tennis – Your Ultimate Tennis Expert!</strong></p>
+    <p class="highlight">🌟 Wimbledon 2025 90% accurate Results 🌟</p>
+  </div>
 
-  <h1>KK Tennis King</h1>
+  <!-- Slide 2 -->
+  <div class="slide">
+    <p>Join thousands of Tennis enthusiasts who rely on our predictions, sessions, Set, Book Set and real-time tennis news!
+      Whether you're a fantasy league player or a die-hard Tennis fan, we provide accurate team insights, reports, player stats,
+      and winning combinations – all designed to help you make the smartest picks and stay ahead of the game.
+    </p>
 
-  <a href="#" class="telegram-btn">
-    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram Icon">
-    JOIN CHANNEL NOW
-  </a>
+    <div class="section-title">👉 What We Offer:</div>
+    <ul>
+      <li>Daily Free Match Session Updates</li>
+      <li>Free Pro-Level Accurate Predictions</li>
+      <li>Fast & Reliable Tennis News and Insights For Free</li>
+      <li>Direct Access to Our Exclusive Telegram Community</li>
+    </ul>
 
-  <div class="subscribers">26,000</div>
-  <div class="label">SUBSCRIBERS</div>
+    <a href="#" class="telegram-btn">
+      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram Icon" />
+      JOIN CHANNEL NOW
+    </a>
+  </div>
+</div>
 
-  <p><strong>Welcome to KK Tennis – Your Ultimate Tennis Expert!</strong></p>
-
-  <p class="highlight">🌟 Wimbledon 2025 90% accurate Results 🌟</p>
-
-  <p>
-    Join thousands of Tennis enthusiasts who rely on our predictions, sessions, Set, Book Set and real-time tennis news!
-    Whether you're a fantasy league player or a die-hard Tennis fan, we provide accurate team insights, reports, player stats,
-    and winning combinations – all designed to help you make the smartest picks and stay ahead of the game.
-  </p>
-
-  <div class="section-title">👉 What We Offer:</div>
-
-  <ul>
-    <li>Daily Free Match Session Updates</li>
-    <li>Free Pro-Level Accurate Predictions</li>
-    <li>Fast & Reliable Tennis News and Insights For Free</li>
-    <li>Direct Access to Our Exclusive Telegram Community</li>
-  </ul>
-
-  <a href="#" class="telegram-btn bottom-btn">
-    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram Icon">
-    JOIN CHANNEL NOW
-  </a>
+<script>
+  // Slide after 4 seconds
+  setTimeout(() => {
+    document.getElementById('slider').style.transform = 'translateX(-100vw)';
+  }, 4000);
+</script>
 
 </body>
 </html>
