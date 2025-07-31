@@ -208,21 +208,26 @@
     }
   });
 
-  // Animated Subscriber Counter
+  // Subscriber Counter
   const countElement = document.getElementById("subscriberCount");
   let storedCount = parseInt(localStorage.getItem("kk_subscribers")) || 26000;
+  const maxCount = 26300;
+
+  // Set initial value without animation
+  countElement.textContent = storedCount.toLocaleString();
 
   function updateCounter() {
-    storedCount++;
-    countElement.textContent = storedCount.toLocaleString();
-    countElement.classList.add("pulse-effect");
+    if (storedCount < maxCount) {
+      storedCount++;
+      countElement.textContent = storedCount.toLocaleString();
+      countElement.classList.add("pulse-effect");
+      localStorage.setItem("kk_subscribers", storedCount);
 
-    localStorage.setItem("kk_subscribers", storedCount);
-
-    setTimeout(() => countElement.classList.remove("pulse-effect"), 200);
+      setTimeout(() => countElement.classList.remove("pulse-effect"), 200);
+    }
   }
 
-  setInterval(updateCounter, 500); // 2 subscribers every second
+  setInterval(updateCounter, 500); // 1 increment every 500ms
 </script>
 
 </body>
