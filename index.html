@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>KK Tennis King</title>
 
-  <!-- Preconnect to improve font loading performance -->
+  <!-- Preload font to avoid render blocking -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+
+  <!-- Preconnect for faster font loading -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -132,8 +135,6 @@
       font-weight: bold;
       color: #1e293b;
       margin: 10px 0;
-      margin-top: 80px;
-      margin-bottom: 40px;
       font-size: 16px;
     }
 
@@ -145,6 +146,7 @@
       letter-spacing: 1px;
       text-transform: uppercase;
       animation: redPulse 1.5s infinite;
+      animation-delay: 1.2s;
       text-shadow:
         0 0 5px #ffffff,
         0 0 10px #ffffff,
@@ -153,9 +155,14 @@
         0 0 30px #ffffff;
     }
 
+    .no-anim {
+      animation: none !important;
+      text-shadow: none !important;
+    }
+
     @keyframes redPulse {
-      0% { text-shadow: 0 0 5px#ffffff; }
-      50% { text-shadow: 0 0 10px#ffffff, 0 0 15px #ffffff; }
+      0% { text-shadow: 0 0 5px #ffffff; }
+      50% { text-shadow: 0 0 10px #ffffff, 0 0 15px #ffffff; }
       100% { text-shadow: 0 0 5px #ffffff; }
     }
 
@@ -193,12 +200,16 @@
     }
   </style>
 </head>
+
 <body>
+
+<!-- Moved higher in DOM and animation delayed -->
+<p class="highlight neon-red-pulse no-anim">🌟 WIMBLEDON 2025 90% ACCURATE RESULTS 🌟</p>
 
 <div id="slider" class="container">
   <!-- Slide 1 -->
   <div class="slide">
-<img class="profile-pic" src="Tennis.jpg" alt="KK Tennis King" loading="lazy" />
+    <img class="profile-pic" src="Tennis.jpg" alt="KK Tennis King" loading="lazy" />
     <a href="https://telegram.me/+lLApnW_TSyI4ZWZl" class="telegram-btn">
       <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram Icon" />
       JOIN CHANNEL NOW
@@ -206,7 +217,6 @@
     <div class="subscribers" id="subscriberCount">26,000</div>
     <div class="label">SUBSCRIBERS</div>
     <p><strong>Welcome to KK Tennis – Your Ultimate Tennis Expert!</strong></p>
-    <p class="highlight neon-red-pulse">🌟 WIMBLEDON 2025 90% ACCURATE RESULTS 🌟</p>
     <a href="https://telegram.me/+lLApnW_TSyI4ZWZl" class="telegram-btn">
       <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram Icon" />
       JOIN CHANNEL NOW
@@ -233,6 +243,7 @@
   </div>
 </div>
 
+<!-- JS Scripts -->
 <script>
   // Slide animation after 4s
   let slider = document.getElementById('slider');
@@ -265,12 +276,16 @@
       countElement.textContent = storedCount.toLocaleString();
       countElement.classList.add("pulse-effect");
       localStorage.setItem("kk_subscribers", storedCount);
-
       setTimeout(() => countElement.classList.remove("pulse-effect"), 200);
     }
   }
 
   setInterval(updateCounter, 500);
+
+  // Animate LCP text after load
+  window.addEventListener('load', () => {
+    document.querySelector('.no-anim')?.classList.remove('no-anim');
+  });
 </script>
 
 </body>
