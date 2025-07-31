@@ -10,14 +10,16 @@
       margin: 0;
       font-family: 'Roboto', sans-serif;
       background: linear-gradient(180deg, #a78bfa, #c4b5fd);
-      color: #333;
+      color: #fff;
       text-align: center;
       overflow: hidden;
+      max-width: 420px;
+      margin: auto;
     }
 
     .container {
       display: flex;
-      width: 200%;
+      width: 200vw;
       transition: transform 1s ease-in-out;
     }
 
@@ -34,12 +36,8 @@
       object-fit: cover;
       border: 5px solid #fff;
       box-shadow: 0 0 20px rgba(0,0,0,0.2);
-    }
-
-    h1 {
-      margin-top: 20px;
-      font-size: 32px;
-      color: #fff;
+      margin: 10px auto;
+      animation: float 2s ease-in-out infinite;
     }
 
     .telegram-btn {
@@ -55,8 +53,8 @@
       font-weight: bold;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
       transition: 0.3s;
-      animation: pulse 2s infinite;
-      margin: 25px auto;
+      animation: pulse 2s infinite, float 2s ease-in-out infinite;
+      margin: 15px auto;
     }
 
     .telegram-btn:hover {
@@ -84,6 +82,18 @@
       }
     }
 
+    @keyframes float {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-5px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+
     .subscribers {
       font-size: 42px;
       font-weight: bold;
@@ -92,14 +102,14 @@
 
     .label {
       font-size: 18px;
-      color: #4b5563;
-      margin-bottom: 30px;
+      color: #e0e0e0;
+      margin-bottom: 20px;
     }
 
     .section-title {
       font-size: 22px;
       font-weight: bold;
-      margin-top: 30px;
+      margin-top: 20px;
     }
 
     .highlight {
@@ -118,7 +128,12 @@
 
     ul li::before {
       content: "✅ ";
-      color: green;
+      color: greenyellow;
+    }
+
+    .neon {
+      color: #39ff14;
+      text-shadow: 0 0 5px #39ff14, 0 0 10px #39ff14, 0 0 20px #39ff14;
     }
   </style>
 </head>
@@ -128,8 +143,11 @@
   <!-- Slide 1 -->
   <div class="slide">
     <img class="profile-pic" src="Tennis.jpg" alt="KK Tennis King" />
-    <h1>KK Tennis King</h1>
     <a href="#" class="telegram-btn">
+      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram Icon" />
+      JOIN CHANNEL NOW
+    </a>
+    <a href="https://telegram.me/+lLApnW_TSyI4ZWZl" class="telegram-btn">
       <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram Icon" />
       JOIN CHANNEL NOW
     </a>
@@ -141,20 +159,18 @@
 
   <!-- Slide 2 -->
   <div class="slide">
-    <p>Join thousands of Tennis enthusiasts who rely on our predictions, sessions, Set, Book Set and real-time tennis news!
-      Whether you're a fantasy league player or a die-hard Tennis fan, we provide accurate team insights, reports, player stats,
-      and winning combinations – all designed to help you make the smartest picks and stay ahead of the game.
-    </p>
+    <img class="profile-pic" src="Tennis.jpg" alt="KK Tennis King" />
+    <p class="neon">Join thousands of Tennis enthusiasts who rely on our predictions, sessions, Set, Book Set and real-time tennis news! Whether you're a fantasy league player or a die-hard Tennis fan, we provide accurate team insights, reports, player stats, and winning combinations – all designed to help you make the smartest picks and stay ahead of the game.</p>
 
-    <div class="section-title">👉 What We Offer:</div>
-    <ul>
+    <div class="section-title neon">👉 What We Offer:</div>
+    <ul class="neon">
       <li>Daily Free Match Session Updates</li>
       <li>Free Pro-Level Accurate Predictions</li>
       <li>Fast & Reliable Tennis News and Insights For Free</li>
       <li>Direct Access to Our Exclusive Telegram Community</li>
     </ul>
 
-    <a href="#" class="telegram-btn">
+    <a href="https://t.me/+lLApnW_TSyI4ZWZl" class="telegram-btn">
       <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram Icon" />
       JOIN CHANNEL NOW
     </a>
@@ -162,10 +178,24 @@
 </div>
 
 <script>
-  // Slide after 4 seconds
+  let slider = document.getElementById('slider');
+  let currentSlide = 0;
   setTimeout(() => {
-    document.getElementById('slider').style.transform = 'translateX(-100vw)';
+    currentSlide = 1;
+    slider.style.transform = 'translateX(-100vw)';
   }, 4000);
+
+  // Allow swipe left/right on mobile to toggle slides
+  let startX = 0;
+  document.addEventListener('touchstart', e => startX = e.touches[0].clientX);
+  document.addEventListener('touchend', e => {
+    let endX = e.changedTouches[0].clientX;
+    if (startX - endX > 50) {
+      slider.style.transform = 'translateX(-100vw)';
+    } else if (endX - startX > 50) {
+      slider.style.transform = 'translateX(0vw)';
+    }
+  });
 </script>
 
 </body>
