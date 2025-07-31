@@ -125,6 +125,28 @@
 
       font-size: 16px;
     }
+    .neon-red-pulse {
+  font-size: 16px;
+  font-weight: bold;
+  color: #ff4d4d;
+  text-align: center;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  animation: redPulse 1.5s infinite;
+  text-shadow:
+    0 0 5px #ff4d4d,
+    0 0 10px #ff4d4d,
+    0 0 15px #ff4d4d,
+    0 0 20px #ff1a1a,
+    0 0 30px #ff1a1a;
+}
+
+@keyframes redPulse {
+  0% { text-shadow: 0 0 5px #ff4d4d; }
+  50% { text-shadow: 0 0 20px #ff1a1a, 0 0 30px #ff1a1a; }
+  100% { text-shadow: 0 0 5px #ff4d4d; }
+}
+
 
     ul {
       list-style: none;
@@ -152,7 +174,7 @@
   color: #ffffff;           
   text-align: lefyr;   
   margin-top: 20px;
-  line-height: 1.2;
+  line-height: 1.4;
   text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000;
   padding: 0 10px;
 }
@@ -171,7 +193,7 @@
     <div class="subscribers" id="subscriberCount">26,000</div>
     <div class="label">SUBSCRIBERS</div>
     <p><strong>Welcome to KK Tennis – Your Ultimate Tennis Expert!</strong></p>
-    <p class="highlight">🌟 Wimbledon 2025 90% accurate Results 🌟</p>
+<p class="highlight neon-red-pulse">🌟 WIMBLEDON 2025 90% ACCURATE RESULTS 🌟</p>    
     <a href="#" class="telegram-btn">
       <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram Icon" />
       JOIN CHANNEL NOW
